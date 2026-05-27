@@ -2,36 +2,40 @@
 
 using namespace std;
 
+
 class MessageSender{
     public:
-        virtual void sendMessage(string& message) = 0;
-        ~MessageSender(){}
+        virtual void sendMessage(string message) = 0;
+        ~MessageSender() {};
 };
 
 class EmailMessage: public MessageSender{
     public:
-        void sendMessage(string &message) override{
+        void sendMessage(string message){
             cout <<
-                "Email" + message
-                <<endl;
+                "[Email]\n"
+                << message
+                << endl;
         }
 };
 
 class PushMessage: public MessageSender{
     public:
-        void sendMessage(string& message) override{
+        void sendMessage(string message){
             cout <<
-                "Push Message" + message
-                <<endl;
+                "[Push Message]\n"
+                << message
+                << endl;
         }
 };
 
 class MobileMessage: public MessageSender{
     public:
-        void sendMessage(string &message) override{
-            cout << 
-                "Mobile Message" + message
-                <<endl;
+        void sendMessage(string message){
+            cout <<
+                "[Mobile Message]\n"
+                << message
+                << endl;
         }
 };
 
@@ -39,51 +43,60 @@ class Notification {
     protected:
         MessageSender *message;
     public:
-        Notification(MessageSender *msg): message(msg) {}; 
-
+        Notification(MessageSender *msg): message(msg){};
         virtual void notify(string msg) = 0;
-        ~Notification() {};
+        ~Notification(){};
 };
+
 
 class AlertNotification: public Notification{
     public:
-        AlertNotification(MessageSender *s): Notification(s) {};
-        
-        void notify(string msg) override {
+        AlertNotification(MessageSender *msg): Notification(msg){};
+
+        void notify(string msg) override{
             message->sendMessage(msg);
         }
 };
 
 class ReminderNotification: public Notification{
     public:
-        ReminderNotification(MessageSender *s): Notification(s){};
+        ReminderNotification(MessageSender *msg): Notification(msg){};
 
-        void notify(string msg)override {
+        void notify(string msg) override{
             message->sendMessage(msg);
         }
 };
 
 class PromotionalNotification: public Notification{
-    public: 
-        PromotionalNotification(MessageSender *s): Notification(s){};
+    public:
+        PromotionalNotification(MessageSender *msg): Notification(msg){};
 
-        void notify(string msg)override {
+        void notify(string msg) override{
             message->sendMessage(msg);
         }
 };
 
+
 int main(){
-    MessageSender *email = new EmailMessage();
-    MessageSender *pm = new MobileMessage();
-    MessageSender *push = new PushMessage();
+    MessageSender *emailMessage = new EmailMessage();
+    MessageSender *pushMessage = new PushMessage();
+    MessageSender *mobileMessage = new MobileMessage();
 
-    Notification *alert = new AlertNotification(email);
-    Notification *rem = new ReminderNotification(pm);
-    Notification *pn = new PromotionalNotification(email);
 
-    alert->notify(" alert");
-    rem->notify(" reminder");
-    pn->notify(" promotional");
+    Notification *alertNotification = new AlertNotification(emailMessage);
+    Notification *reminderNotification = new ReminderNotification(pushMessage);
+    Notification *promotionalNotification = new PromotionalNotification(mobileMessage);
 
+    alertNotification->notify(" alert notification using email");
+    reminderNotification->notify(" reminder notification using push msg");
+    promotionalNotification->notify(" promotional message using mobile message");
+
+    delete emailMessage;
+    delete pushMessage;
+    delete mobileMessage;
+    delete alertNotification;
+    delete reminderNotification;
+    delete promotionalNotification;
+    
     return 0;
 }
