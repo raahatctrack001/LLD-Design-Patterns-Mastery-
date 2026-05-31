@@ -35,9 +35,9 @@ public:
             << "Fetching live weather data..."
             << endl;
 
-        this_thread::sleep_for(
-            chrono::seconds(2)
-        );
+        // this_thread::sleep_for(
+        //     chrono::seconds(2)
+        // );
 
         return
             "Weather in " +
@@ -71,9 +71,9 @@ public:
             << "[PROXY] Authenticating request..."
             << endl;
 
-        this_thread::sleep_for(
-            chrono::milliseconds(500)
-        );
+        // this_thread::sleep_for(
+        //     chrono::milliseconds(500)
+        // );
 
         cout
             << "[PROXY] Connecting to remote server: "
@@ -84,17 +84,17 @@ public:
             << "[PROXY] Serializing request..."
             << endl;
 
-        this_thread::sleep_for(
-            chrono::milliseconds(500)
-        );
+        // this_thread::sleep_for(
+        //     chrono::milliseconds(500)
+        // );
 
         cout
             << "[PROXY] Sending request over network..."
             << endl;
 
-        this_thread::sleep_for(
-            chrono::seconds(1)
-        );
+        // this_thread::sleep_for(
+        //     chrono::seconds(1)
+        // );
 
         bool serverReachable = true;
 
@@ -113,9 +113,9 @@ public:
             << "[PROXY] Receiving response..."
             << endl;
 
-        this_thread::sleep_for(
-            chrono::milliseconds(500)
-        );
+        // this_thread::sleep_for(
+        //     chrono::milliseconds(500)
+        // );
 
         cout
             << "[PROXY] Deserializing response..."
