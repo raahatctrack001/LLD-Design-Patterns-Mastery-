@@ -1,9 +1,16 @@
 # STRATEGY DESIGN PATTERN — COMPLETE DEEP REVISION
+```Strategy is one of them most important and widely used design pattern as it solves one of the massive architectural problem of hardcoded conditional driven behaviour by encapsulating multiple interchangeable behaviours behind the stable abstraction as runtime where each algorithm in a family of algorithm can vary, grow or shrink independently i.e. conditional drive bahaviour is now changed into polymorphic interchangeable behaviour. 
+
+without Strategy: giant conditional chains, tight coupling, difficult to scale, OCP voilation, maintenance nightmare, diffifult to test and logic become scattered
+
+with strategy: conditional-driven behaviour is switched to polymorhic interchangeable behavious
+```
+
 
 Strategy is one of the most important behavioral patterns because it solves a massive architectural problem:
 
 ```text id="strategy001"
-hardcoded conditional behavior selection
+Problem: hardcoded conditional behavior selection
 ```
 
 Most beginners think Strategy means:
@@ -15,11 +22,8 @@ Most beginners think Strategy means:
 But architecturally, Strategy is actually about:
 
 ```text id="strategy003"
-encapsulating interchangeable behaviors behind a stable abstraction
+work: encapsulating interchangeable behaviors behind a stable abstraction
 ```
-
-That is the real senior-level understanding.
-
 ---
 
 # Intent
@@ -37,6 +41,9 @@ Strategy lets the algorithm vary independently from clients that use it.
 ---
 
 # Fundamental Problem
+
+
+
 
 Suppose payment system supports:
 
@@ -86,6 +93,8 @@ use:
 polymorphic interchangeable behaviors
 ```
 
+
+
 ---
 
 # The Most Important Interview Insight
@@ -93,7 +102,7 @@ polymorphic interchangeable behaviors
 Strategy is fundamentally about:
 
 ```text id="strategy007"
-runtime behavior substitution
+*******runtime behavior substitution*******
 ```
 
 This is the heart of the pattern.
